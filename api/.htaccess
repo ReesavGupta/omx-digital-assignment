@@ -1,0 +1,17 @@
+# Enable PUT and DELETE requests
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    
+    # If the request method is not GET or POST
+    RewriteCond %{REQUEST_METHOD} !^(GET|POST)$
+    # Set the request method to the X-HTTP-Method-Override header if it exists
+    RewriteCond %{HTTP:X-HTTP-Method-Override} ^(DELETE|PUT)$
+    RewriteRule .* - [E=HTTP_X_HTTP_METHOD_OVERRIDE:%{HTTP:X-HTTP-Method-Override}]
+</IfModule>
+
+# Set PHP environment variables for PUT and DELETE
+<IfModule mod_php7.c>
+    SetEnvIf X-HTTP-Method-Override "^DELETE$" REQUEST_METHOD=DELETE
+    SetEnvIf X-HTTP-Method-Override "^PUT$" REQUEST_METHOD=PUT
+</IfModule>
