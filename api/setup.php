@@ -17,3 +17,4 @@ try {
     echo json_encode(['error' => 'Database setup failed: ' . $e->getMessage()]);
 }
 ?>
+

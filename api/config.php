@@ -1,5 +1,4 @@
 <?php
-// Database configuration
 $host = 'localhost';
 $dbname = 'blog_system';
 $username = 'root';
@@ -28,7 +27,6 @@ try {
     exit();
 }
 
-// Function to validate post data
 function validatePostData($data) {
     $errors = [];
     
@@ -45,9 +43,9 @@ function validatePostData($data) {
     return $errors;
 }
 
-// Function to get request body as JSON
 function getRequestBody() {
     $json = file_get_contents('php://input');
     return json_decode($json, true);
 }
 ?>
+

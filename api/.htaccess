@@ -15,3 +15,4 @@
     SetEnvIf X-HTTP-Method-Override "^DELETE$" REQUEST_METHOD=DELETE
     SetEnvIf X-HTTP-Method-Override "^PUT$" REQUEST_METHOD=PUT
 </IfModule>
+
